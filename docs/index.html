@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Nao Selectは、楽天商品を運営者が選定し、楽天ROOMへの手動登録とPinterest投稿準備を支援する個人運営のローカルツールです。">
+  <title>Nao Select | 商品選定・投稿準備ツール</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">本文へ移動</a>
+  <header class="site-header">
+    <div class="shell header-inner">
+      <a class="brand" href="index.html" aria-label="Nao Select トップページ">Nao Select</a>
+      <nav aria-label="メインナビゲーション">
+        <a aria-current="page" href="index.html">概要</a>
+        <a href="privacy.html">プライバシーポリシー</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero">
+      <div class="shell hero-grid">
+        <div>
+          <p class="eyebrow">Owner-operated · Local-first · In development</p>
+          <h1>商品を選び、<br>伝わる形に整える。</h1>
+          <p class="lead">Nao Selectは、楽天の商品探索から運営者による選定、楽天ROOMへの手動登録、Pinterest投稿案の準備までを支援する、個人運営のローカルツールです。</p>
+          <div class="actions">
+            <a class="button primary" href="#purpose">用途を見る</a>
+            <a class="button secondary" href="privacy.html">プライバシーポリシー</a>
+          </div>
+        </div>
+        <aside class="status-card" aria-labelledby="status-title">
+          <p class="status-label">CURRENT STATUS</p>
+          <h2 id="status-title">開発・審査準備中</h2>
+          <ul class="status-list">
+            <li><span>運営形態</span><strong>運営者本人の利用</strong></li>
+            <li><span>Pinterest API</span><strong>未承認・未接続</strong></li>
+            <li><span>現在の投稿</span><strong>Dry-runのみ</strong></li>
+            <li><span>外部トラッキング</span><strong>なし</strong></li>
+          </ul>
+          <p class="small">Trial AccessはStandard Accessとは異なります。Trial承認だけで一般公開の自動投稿が可能になるとは扱いません。</p>
+        </aside>
+      </div>
+    </section>
+
+    <section id="purpose" class="section">
+      <div class="shell">
+        <p class="section-kicker">PURPOSE</p>
+        <h2>運営者の確認を中心にした商品紹介フロー</h2>
+        <p class="section-intro">楽天市場の商品情報をそのまま自動投稿するのではなく、運営者が候補を確認・選定し、各サービスの規約と承認範囲に応じて段階的に利用する構想です。楽天アフィリエイトに関連する商品URLを扱う可能性があります。</p>
+        <ol class="flow" aria-label="Nao Selectの想定フロー">
+          <li><span>01</span><div><h3>楽天商品を探索</h3><p>公式APIから取得した商品情報を期限付きキャッシュとして扱います。</p></div></li>
+          <li><span>02</span><div><h3>運営者が選定</h3><p>自動フィルターとローカル画面を使い、採用・修正・見送りを判断します。</p></div></li>
+          <li><span>03</span><div><h3>楽天ROOMへ手動登録</h3><p>ROOMへの最終投稿は運営者本人が手動で行います。ブラウザ自動操作は行いません。</p></div></li>
+          <li><span>04</span><div><h3>Pinterest投稿を準備</h3><p>タイトル、説明、alt text、ROOM URLを確認し、Pinごとの明示承認を前提にします。</p></div></li>
+          <li><span>05</span><div><h3>Analyticsを検討</h3><p>利用条件と保存設計が確認できた範囲だけを運用改善に利用する予定です。現在は未実装です。</p></div></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section muted">
+      <div class="shell split">
+        <article>
+          <p class="section-kicker">IMPLEMENTED LOCALLY</p>
+          <h2>現在確認できる実装</h2>
+          <ul class="check-list">
+            <li>楽天APIの読み取りと、価格・販売可否24時間／その他商品情報3か月の期限管理</li>
+            <li>重複・期限切れ・不足項目を除く決定論的な候補絞り込み</li>
+            <li>synthetic／mockデータによる商品選定AI境界の検証</li>
+            <li>運営者による採用・修正・見送りのローカル承認画面</li>
+            <li>楽天ROOM用コメント準備と、手動投稿後のROOM URL登録</li>
+            <li>Pinterest投稿案の作成、preview、dry-run、安全ゲート</li>
+            <li>Pinterest API由来データを永続保存しないruntime-only設計</li>
+          </ul>
+        </article>
+        <article>
+          <p class="section-kicker">PLANNED AFTER REVIEW</p>
+          <h2>承認・規約確認後の予定</h2>
+          <ul class="plain-list">
+            <li><strong>Trial Sandbox検証</strong><br>Trial承認後も、作成者だけに見えるSandbox entityを使い、限定的に確認します。</li>
+            <li><strong>Pinごとの投稿確認</strong><br>一括自動投稿ではなく、各Pinを運営者が選択して承認する設計を維持します。</li>
+            <li><strong>Analytics</strong><br>保存・利用条件を確認し、設計が承認された後にのみ検討します。</li>
+            <li><strong>Standard Access</strong><br>Trialとは別の審査段階として扱い、必要なOAuth実装とデモを準備してから申請します。</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="section english" lang="en">
+      <div class="shell narrow">
+        <p class="section-kicker">ENGLISH SUMMARY</p>
+        <h2>About Nao Select</h2>
+        <p>Nao Select is an owner-operated, local-first tool under development. It helps the operator discover products through the official Rakuten API, review and select candidates, prepare content for manual posting to Rakuten ROOM, and prepare Pinterest Pin drafts that may link to the resulting ROOM pages.</p>
+        <p>Pinterest API access is not currently approved or connected. The current implementation is limited to local dry-runs with synthetic data. Any future Pinterest publishing action will require the operator to knowingly approve each Pin. Trial and Standard access are treated as separate stages.</p>
+      </div>
+    </section>
+
+    <section class="section policy-cta">
+      <div class="shell cta-inner">
+        <div><p class="section-kicker">PRIVACY</p><h2>データの扱いを公開しています</h2><p>現在の実装、認証情報、保存期間、外部AIとの境界を確認できます。</p></div>
+        <a class="button primary" href="privacy.html">ポリシーを読む</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="shell footer-inner">
+      <p><strong>Nao Select</strong><br><span>Personal product-content workflow tool</span></p>
+      <p><a href="privacy.html">プライバシーポリシー</a><br><a href="https://github.com/Nao4988/nao-select-info/issues">お問い合わせ</a></p>
+    </div>
+    <div class="shell legal">Nao Select is not affiliated with, endorsed by, or sponsored by Pinterest or Rakuten.</div>
+  </footer>
+</body>
+</html>

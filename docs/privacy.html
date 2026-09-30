@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Nao Selectのプライバシーポリシー。現在のローカル実装と将来のPinterest API連携におけるデータの扱いを説明します。">
+  <title>プライバシーポリシー | Nao Select</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">本文へ移動</a>
+  <header class="site-header">
+    <div class="shell header-inner">
+      <a class="brand" href="index.html">Nao Select</a>
+      <nav aria-label="メインナビゲーション">
+        <a href="index.html">概要</a>
+        <a aria-current="page" href="privacy.html">プライバシーポリシー</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="policy-page">
+    <div class="shell policy-layout">
+      <aside class="policy-meta">
+        <p class="section-kicker">PRIVACY POLICY</p>
+        <h1>プライバシー<br>ポリシー</h1>
+        <dl><dt>運営主体</dt><dd>Nao Select運営者</dd><dt>発効日</dt><dd>2026年9月30日</dd><dt>最終更新日</dt><dd>2026年9月30日</dd></dl>
+        <p class="small">本ポリシーは日本語を正文とし、英語部分は審査担当者向けの要約です。</p>
+      </aside>
+
+      <article class="policy-content">
+        <section>
+          <h2>1. 対象と現在の状態</h2>
+          <p>本ポリシーは、個人運営のローカルツール「Nao Select」と、この紹介サイトにおける情報の取扱いを説明します。本ツールは運営者本人による商品紹介コンテンツの準備・管理を目的として開発中です。</p>
+          <p>Pinterest APIの利用承認は現在取得しておらず、実Pinterest APIへの接続、OAuth、Pin投稿、Analytics取得は稼働していません。ローカル検証はsynthetic／mockデータとdry-runに限定しています。</p>
+        </section>
+
+        <section>
+          <h2>2. 紹介サイトで取得する情報</h2>
+          <p>本サイトには、ログイン、問い合わせフォーム、独自Cookie、アクセス解析、広告、外部トラッキングを実装していません。本サイト自身は閲覧者から個人情報を入力・送信させません。</p>
+          <p>公開に使用するホスティングサービスが標準的なアクセスログを処理する場合があります。その取扱いは当該サービスのポリシーに従います。</p>
+        </section>
+
+        <section>
+          <h2>3. ローカルツールで扱う情報</h2>
+          <p>現在の実装は、運営者のローカル環境で次の情報を扱います。</p>
+          <ul>
+            <li>楽天APIから取得した商品名、価格、商品URL、affiliate URL、画像URL、店舗名、ジャンル、レビュー情報、取得時刻</li>
+            <li>運営者が作成・編集した選定状態、Pinタイトル案、説明文、alt text、訴求ポイント</li>
+            <li>楽天ROOMへの手動投稿準備情報と、運営者が登録したROOM URL</li>
+            <li>ローカル承認、request ID、payload hash、ローカル日時、操作履歴</li>
+          </ul>
+          <p>Pinterest APIへ実接続する将来の段階でも、Board ID、Pin ID、pagination bookmark、response body、error body、Board／Pin object、account情報、provider metadataは永続保存せず、必要な処理中のメモリだけで使用する設計です。</p>
+        </section>
+
+        <section>
+          <h2>4. 利用目的</h2>
+          <ul>
+            <li>楽天商品の探索、期限管理、重複除外、運営者による候補選定</li>
+            <li>楽天ROOMへ運営者が手動投稿するためのコメント準備</li>
+            <li>運営者が確認するPinterest投稿案の作成とdry-run</li>
+            <li>承認後の限定的なSandbox検証と、Pinごとの明示承認</li>
+            <li>ローカルの安全管理、重複送信防止、障害診断</li>
+          </ul>
+          <p>Pinterest Analyticsの取得・保存・学習利用は現在実装していません。利用条件と保存設計が別途確認・承認されるまで開始しません。</p>
+        </section>
+
+        <section>
+          <h2>5. 保存場所と保存期間</h2>
+          <p>楽天商品情報は上流provider cacheとしてローカルSQLiteへ保存し、価格および販売可否は取得から24時間、その他の商品情報は取得から3か月を有効期間とします。期限切れ情報は現在情報として表示せず、AI、Pinterest、その他の下流処理へ渡しません。</p>
+          <p>Nao Select自身が生成する投稿案、承認状態、ROOM URL、request ID、payload hash、ローカル操作履歴には、現時点で固定の保存期間を定義していません。これらは楽天API由来キャッシュと分離してローカルに保存します。</p>
+          <p>本ツールは現在、運営者本人だけが利用するローカルツールであり、一般利用者向けのアカウントや削除依頼機能は提供していません。保存期間または削除機能を変更する場合は、実装前に本ポリシーを更新します。</p>
+        </section>
+
+        <section>
+          <h2>6. 認証情報</h2>
+          <p>API key、access token、App Secret、refresh tokenその他の秘密情報は、運営者のローカル環境にある環境ファイルで管理します。公開Repository、公開ページ、SQLite、通常ログ、または認証済みrequest URLへ保存・出力しません。</p>
+          <p>Pinterestと連携する場合は、Pinterestが提供するaccess tokenまたはOAuth等の正式な認証方式だけを使用し、Pinterestのパスワードやsession cookieを要求・取得しません。</p>
+        </section>
+
+        <section>
+          <h2>7. 外部AIと第三者提供</h2>
+          <p>実際の楽天API商品データおよびPinterest API由来データは、OpenAIその他の外部AI、ML学習、fine-tuning、learning engineへ送信しません。AI境界の検証にはsynthetic／mockデータだけを使用します。</p>
+          <p>Pinterest API由来データを販売せず、広告データブローカーその他の第三者へ提供しません。法令上必要な場合を除き、運営者本人以外と共有しません。</p>
+        </section>
+
+        <section>
+          <h2>8. 楽天ROOMと投稿操作</h2>
+          <p>楽天ROOMへの最終投稿は運営者本人が手動で行います。Nao Selectは楽天ROOMへの自動投稿、ブラウザ自動操作、非公開API操作を行いません。</p>
+          <p>将来Pinterest投稿を行う場合も、運営者が対象Pinを個別に確認し、明示的に承認する操作を必要とします。結果が不明な投稿を自動再送しません。</p>
+        </section>
+
+        <section>
+          <h2>9. セキュリティ</h2>
+          <ul>
+            <li>SecretsとローカルDBを公開Repositoryへ保存しない</li>
+            <li>HTTP、認証、parse、response shape、identity error時にfail-closedとする</li>
+            <li>Pinterest Production操作を承認なしで有効化しない</li>
+            <li>Pinterest API由来データをruntime-onlyで処理する</li>
+          </ul>
+          <p>これらはリスクを低減するための措置であり、完全な安全を保証するものではありません。</p>
+        </section>
+
+        <section>
+          <h2>10. お問い合わせ</h2>
+          <p>本ポリシーに関する問い合わせは、<a href="https://github.com/Nao4988/nao-select-info/issues">Nao Select Informationの公開Issues</a>をご利用ください。公開Issueには、access token、App Secret、パスワード、個人情報、その他の秘密情報を投稿しないでください。</p>
+        </section>
+
+        <section class="english-summary" lang="en">
+          <p class="section-kicker">ENGLISH SUMMARY</p>
+          <h2>Privacy summary</h2>
+          <p>Nao Select is an owner-operated, local tool under development. Pinterest API access is not currently approved or connected. The public site has no login, form, first-party analytics, advertising, or external tracking.</p>
+          <p>Rakuten product data is stored only as a time-limited local provider cache. Pinterest API response data—including Board IDs, Pin IDs, bookmarks, response bodies, account data, and metadata—is designed to remain runtime-only. Credentials stay in the operator's local environment and are not committed, logged, or stored in the database.</p>
+          <p>Real Rakuten or Pinterest API data is not sent to external AI or used for model training. Pinterest Analytics is not currently collected or stored. Any future Pin publishing action will require the operator's explicit approval for that individual Pin.</p>
+        </section>
+
+        <p class="back-link"><a href="index.html">← Nao Select概要へ戻る</a></p>
+      </article>
+    </div>
+  </main>
+
+  <footer>
+    <div class="shell footer-inner"><p><strong>Nao Select</strong><br><span>Personal product-content workflow tool</span></p><p><a href="index.html">概要</a><br><a href="https://github.com/Nao4988/nao-select-info/issues">お問い合わせ</a></p></div>
+    <div class="shell legal">Nao Select is not affiliated with, endorsed by, or sponsored by Pinterest or Rakuten.</div>
+  </footer>
+</body>
+</html>
